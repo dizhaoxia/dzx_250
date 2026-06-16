@@ -15,20 +15,66 @@
                 <button id="btn-eraser" class="tool-btn" title="橡皮擦工具 (E)">🧽</button>
                 <button id="btn-select" class="tool-btn" title="矩形选框 (M)">⬜</button>
                 <button id="btn-move-selection" class="tool-btn" title="移动选区 (V)">✋</button>
+                <button id="btn-wand" class="tool-btn" title="魔棒工具 (W)">🪄</button>
+                <button id="btn-text" class="tool-btn" title="文字工具 (T)">T</button>
+                <button id="btn-gradient" class="tool-btn" title="渐变工具 (G)">🌈</button>
+                <button id="btn-transform" class="tool-btn" title="自由变换 (Ctrl+T / Cmd+T)">🔄</button>
             </div>
             <div class="tool-group">
-                <span class="group-label">画笔设置</span>
+                <span class="group-label">画笔</span>
                 <label>颜色 <input type="color" id="brush-color" value="#000000"></label>
                 <label>大小 <input type="range" id="brush-size" min="1" max="100" value="5"><span id="brush-size-val">5</span></label>
                 <label>不透明度 <input type="range" id="brush-opacity" min="1" max="100" value="100"><span id="brush-opacity-val">100%</span></label>
                 <label class="checkbox-label"><input type="checkbox" id="pressure-sensitivity"> 压力感</label>
             </div>
             <div class="tool-group">
+                <span class="group-label">魔棒</span>
+                <label>容差 <input type="range" id="wand-tolerance" min="1" max="255" value="32"><span id="wand-tolerance-val">32</span></label>
+            </div>
+            <div class="tool-group">
+                <span class="group-label">渐变</span>
+                <label>类型
+                    <select id="gradient-type">
+                        <option value="linear">线性</option>
+                        <option value="radial">径向</option>
+                    </select>
+                </label>
+            </div>
+            <div class="tool-group">
                 <span class="group-label">滤镜</span>
                 <button id="btn-blur" class="tool-btn" title="模糊滤镜">模糊</button>
                 <button id="btn-sharpen" class="tool-btn" title="锐化滤镜">锐化</button>
                 <label>强度 <input type="range" id="filter-strength" min="1" max="20" value="3"><span id="filter-strength-val">3</span></label>
-                <label class="checkbox-label"><input type="checkbox" id="filter-preview" checked> 实时预览</label>
+                <label class="checkbox-label"><input type="checkbox" id="filter-preview" checked> 预览</label>
+                <label class="checkbox-label"><input type="checkbox" id="smart-filter-mode"> 智能</label>
+            </div>
+            <div class="tool-group">
+                <span class="group-label">调整图层</span>
+                <button id="btn-bc-layer" class="tool-btn" title="亮度/对比度">亮/对</button>
+                <button id="btn-hs-layer" class="tool-btn" title="色相/饱和度">色/饱</button>
+            </div>
+            <div class="tool-group" id="adjustment-controls">
+                <span class="group-label">参数</span>
+                <label>亮度 <input type="range" id="adj-brightness" min="-100" max="100" value="0"><span id="adj-brightness-val">0</span></label>
+                <label>对比度 <input type="range" id="adj-contrast" min="-100" max="100" value="0"><span id="adj-contrast-val">0</span></label>
+                <label>色相 <input type="range" id="adj-hue" min="-180" max="180" value="0"><span id="adj-hue-val">0</span></label>
+                <label>饱和 <input type="range" id="adj-saturation" min="-100" max="100" value="0"><span id="adj-saturation-val">0</span></label>
+                <label>明度 <input type="range" id="adj-lightness" min="-100" max="100" value="0"><span id="adj-lightness-val">0</span></label>
+            </div>
+            <div class="tool-group">
+                <span class="group-label">蒙版</span>
+                <button id="btn-add-mask" class="tool-btn" title="添加蒙版 / 选区转蒙版">➕蒙版</button>
+                <button id="btn-toggle-mask" class="tool-btn" title="启/停蒙版">👁蒙</button>
+                <button id="btn-delete-mask" class="tool-btn" title="删除蒙版">🗑蒙</button>
+                <button id="btn-selection-to-mask" class="tool-btn" title="选区转蒙版">选区→蒙</button>
+                <label class="checkbox-label"><input type="checkbox" id="edit-mask-mode"> 编辑蒙版</label>
+                <label>蒙版笔
+                    <select id="mask-brush-color">
+                        <option value="255" selected>白(显)</option>
+                        <option value="128">灰(半)</option>
+                        <option value="0">黑(隐)</option>
+                    </select>
+                </label>
             </div>
             <div class="tool-group">
                 <span class="group-label">选区</span>
