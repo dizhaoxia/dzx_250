@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mini Photoshop</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="app">
+        <div id="toolbar">
+            <div class="tool-group">
+                <span class="group-label">工具</span>
+                <button id="btn-brush" class="tool-btn active" title="画笔工具 (B)">🖌️</button>
+                <button id="btn-select" class="tool-btn" title="矩形选框 (M)">⬜</button>
+            </div>
+            <div class="tool-group">
+                <span class="group-label">画笔设置</span>
+                <label>颜色 <input type="color" id="brush-color" value="#000000"></label>
+                <label>大小 <input type="range" id="brush-size" min="1" max="50" value="5"><span id="brush-size-val">5</span></label>
+            </div>
+            <div class="tool-group">
+                <span class="group-label">滤镜</span>
+                <button id="btn-blur" class="tool-btn" title="模糊滤镜">模糊</button>
+            </div>
+            <div class="tool-group">
+                <span class="group-label">历史</span>
+                <button id="btn-undo" class="tool-btn" title="撤销 (Ctrl+Z)">↩️</button>
+                <button id="btn-redo" class="tool-btn" title="重做 (Ctrl+Y)">↪️</button>
+            </div>
+        </div>
+
+        <div id="main-area">
+            <div id="canvas-container">
+                <div id="canvas-wrapper">
+                    <canvas id="main-canvas"></canvas>
+                    <canvas id="overlay-canvas"></canvas>
+                </div>
+            </div>
+
+            <div id="right-panel">
+                <div id="layer-panel">
+                    <div class="panel-header">
+                        <span>图层</span>
+                        <div class="panel-actions">
+                            <button id="btn-add-layer" title="新建图层">➕</button>
+                            <button id="btn-delete-layer" title="删除图层">🗑️</button>
+                        </div>
+                    </div>
+                    <ul id="layer-list"></ul>
+                </div>
+            </div>
+        </div>
+
+        <div id="status-bar">
+            <span id="status-tool">画笔工具</span>
+            <span id="status-pos">0, 0</span>
+            <span id="status-selection"></span>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
