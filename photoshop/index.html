@@ -12,21 +12,36 @@
             <div class="tool-group">
                 <span class="group-label">工具</span>
                 <button id="btn-brush" class="tool-btn active" title="画笔工具 (B)">🖌️</button>
+                <button id="btn-eraser" class="tool-btn" title="橡皮擦工具 (E)">🧽</button>
                 <button id="btn-select" class="tool-btn" title="矩形选框 (M)">⬜</button>
+                <button id="btn-move-selection" class="tool-btn" title="移动选区 (V)">✋</button>
             </div>
             <div class="tool-group">
                 <span class="group-label">画笔设置</span>
                 <label>颜色 <input type="color" id="brush-color" value="#000000"></label>
-                <label>大小 <input type="range" id="brush-size" min="1" max="50" value="5"><span id="brush-size-val">5</span></label>
+                <label>大小 <input type="range" id="brush-size" min="1" max="100" value="5"><span id="brush-size-val">5</span></label>
+                <label>不透明度 <input type="range" id="brush-opacity" min="1" max="100" value="100"><span id="brush-opacity-val">100%</span></label>
+                <label class="checkbox-label"><input type="checkbox" id="pressure-sensitivity"> 压力感</label>
             </div>
             <div class="tool-group">
                 <span class="group-label">滤镜</span>
                 <button id="btn-blur" class="tool-btn" title="模糊滤镜">模糊</button>
+                <button id="btn-sharpen" class="tool-btn" title="锐化滤镜">锐化</button>
+                <label>强度 <input type="range" id="filter-strength" min="1" max="20" value="3"><span id="filter-strength-val">3</span></label>
+                <label class="checkbox-label"><input type="checkbox" id="filter-preview" checked> 实时预览</label>
+            </div>
+            <div class="tool-group">
+                <span class="group-label">选区</span>
+                <button id="btn-clear-selection" class="tool-btn" title="取消选区 (Esc)">取消</button>
+                <button id="btn-fill-selection" class="tool-btn" title="填充颜色">填充</button>
+                <button id="btn-copy-selection" class="tool-btn" title="复制 (Ctrl+C)">复制</button>
+                <button id="btn-cut-selection" class="tool-btn" title="剪切 (Ctrl+X)">剪切</button>
+                <button id="btn-paste-selection" class="tool-btn" title="粘贴 (Ctrl+V)">粘贴</button>
             </div>
             <div class="tool-group">
                 <span class="group-label">历史</span>
                 <button id="btn-undo" class="tool-btn" title="撤销 (Ctrl+Z)">↩️</button>
-                <button id="btn-redo" class="tool-btn" title="重做 (Ctrl+Y)">↪️</button>
+                <button id="btn-redo" class="tool-btn" title="重做 (Shift+Ctrl+Z)">↪️</button>
             </div>
         </div>
 
@@ -35,6 +50,7 @@
                 <div id="canvas-wrapper">
                     <canvas id="main-canvas"></canvas>
                     <canvas id="overlay-canvas"></canvas>
+                    <canvas id="preview-canvas"></canvas>
                 </div>
             </div>
 
@@ -45,7 +61,12 @@
                         <div class="panel-actions">
                             <button id="btn-add-layer" title="新建图层">➕</button>
                             <button id="btn-delete-layer" title="删除图层">🗑️</button>
+                            <button id="btn-duplicate-layer" title="复制图层">📋</button>
+                            <button id="btn-merge-visible" title="合并可见图层">🔗</button>
                         </div>
+                    </div>
+                    <div class="layer-opacity-control">
+                        <label>不透明度 <input type="range" id="layer-opacity" min="0" max="100" value="100"><span id="layer-opacity-val">100%</span></label>
                     </div>
                     <ul id="layer-list"></ul>
                 </div>
@@ -56,6 +77,7 @@
             <span id="status-tool">画笔工具</span>
             <span id="status-pos">0, 0</span>
             <span id="status-selection"></span>
+            <span id="status-history"></span>
         </div>
     </div>
 
